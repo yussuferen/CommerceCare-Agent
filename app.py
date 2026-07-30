@@ -6,7 +6,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from agent import run_agent
 
-TOKEN = os.getenv("TELEGRAM_KEY")
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
