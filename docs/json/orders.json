@@ -1,0 +1,29 @@
+[
+  {
+    "order_id": "ORD-1001",
+    "customer_id": "CUST-55",
+    "status": "Preparing in Warehouse",
+    "can_cancel": true,
+    "items": [{"name": "Bluetooth Earbuds", "price": 49.99}],
+    "shipping_address": "Istanbul, Turkiye",
+    "order_date": "2026-07-29T10:00:00"
+  },
+  {
+    "order_id": "ORD-1002",
+    "customer_id": "CUST-88",
+    "status": "Dispatched / In Transit",
+    "can_cancel": false,
+    "tracking_code": "TRK-998877",
+    "courier": "DHL Express",
+    "estimated_delivery": "2026-08-01",
+    "items": [{"name": "Gaming Laptop", "price": 1200.00}]
+  },
+  {
+    "order_id": "ORD-1003",
+    "customer_id": "CUST-12",
+    "status": "Delivered",
+    "can_cancel": false,
+    "delivery_date": "2026-07-20",
+    "items": [{"name": "Cotton T-Shirt", "price": 25.00}]
+  }
+]
