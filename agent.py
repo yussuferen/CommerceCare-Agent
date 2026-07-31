@@ -1,7 +1,7 @@
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_agent
-
+from langgraph.checkpoint.memory import MemorySaver
 from tools import rag_search_tool, get_order_status_tool, cancel_order_tool
 
 LLM_MODEL = "gemini-3.5-flash-lite"
@@ -24,15 +24,20 @@ Follow these execution guidelines strictly:
 4. If `cancel_order_tool` fails because the order status is already 'Dispatched / In Transit', use `rag_search_tool` to check the policy for in-transit orders and instruct the user on what to do.
 5. Never hallucinate policies or order details. Rely strictly on tool outputs."""
 
+memory = MemorySaver()
+
 agent = create_agent(
     model=llm,
     tools=tools,
-    system_prompt=system_prompt
+    system_prompt=system_prompt,
+    checkpointer=memory
 )
 
-def run_agent(user_input):
+def run_agent(user_input,thread_id="default_user"):
+    config = {"configurable": {"thread_id": thread_id}}
+
     try:
-        response = agent.invoke({"messages": [{"role": "user", "content": user_input}]})
+        response = agent.invoke({"messages": [{"role": "user", "content": user_input}]},config=config)
     except Exception as e:
         print(f"ERROR: {e}")
         return "Internal Error"

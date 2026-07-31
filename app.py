@@ -20,12 +20,11 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def agent_message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
-    
-    # Show "typing..." action while the bot is generating a response
     await context.bot.send_chat_action(chat_id=update.effective_chat.id, action='typing')
     
     try:
-        agent_response = run_agent(user_message)
+        chat_id = str(update.effective_chat.id)
+        agent_response = run_agent(user_message,thread_id=chat_id)
         await update.message.reply_text(agent_response)
         
     except Exception as e:
