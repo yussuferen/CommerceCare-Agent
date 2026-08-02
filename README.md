@@ -1,4 +1,4 @@
-# CommerceCareAI - Telegram Support Agent
+# CommerceCare-Agent
 
 A Telegram bot built with LangChain that automates e-commerce customer support. 
 It combines a RAG pipeline for answering policy questions with custom tools to check order statuses and process cancellations via a local database.
@@ -42,8 +42,8 @@ graph TD
 
 ### 2. Installation
 
-    git clone https://github.com/yussuferen/ecommerce-support-agent.git
-    cd ecommerce-support-agent
+    git clone https://github.com/yussuferen/CommerceCare-Agent.git
+    cd CommerceCare-Agent
     python -m venv venv
     source venv/bin/activate
     pip install -r requirements.txt
