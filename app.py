@@ -4,6 +4,7 @@ load_dotenv()
 import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from langsmith import traceable
 from agent import run_agent
 
 TOKEN = os.getenv("TELEGRAM_TOKEN")
@@ -18,6 +19,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     welcome_message = f"Hello {user.first_name}! I am CommerceCareAI, your intelligent customer support assistant. How can I help you today?"
     await update.message.reply_text(welcome_message)
 
+@traceable(name="Telegram Message Handler")
 async def agent_message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     await context.bot.send_chat_action(chat_id=update.effective_chat.id, action='typing')

@@ -1,7 +1,7 @@
 # CommerceCare-Agent
 
-A Telegram bot built with LangChain that automates e-commerce customer support. 
-It combines a RAG pipeline for answering policy questions with custom tools to check order statuses and process cancellations via a local database.
+A Telegram bot that automates e-commerce customer support using **LangChain**, **LangGraph**, and **Gemini API**.
+It combines a RAG pipeline for answering policy questions with custom tools to check order statuses and process cancellations.
 
 ---
 
@@ -9,7 +9,7 @@ It combines a RAG pipeline for answering policy questions with custom tools to c
 
 - **LLM & Embeddings:** Gemini API
 - **Vector DB:** ChromaDB
-- **Agent Framework:** LangChain
+- **Agent Framework:** LangChain / LangGraph
 
 ---
 ## Data Flow
@@ -34,7 +34,7 @@ graph TD
 ### 1. Prerequisites
 
     Ensure:
-
+    
     Python 3.10+ installed
     Git installed
     Google Gemini API Key
@@ -50,10 +50,17 @@ graph TD
 
 ### 3. Environment Configuration
 
-    Create a .env file in the root directory of the project. 
-    Pass your API keys inside the env:
-    GEMINI_API_KEY=your_gemini_api_key_here
-    TELEGRAM_TOKEN=your_telegram_bot_token_here
+    Create a .env file in the root directory.
+
+    # Required Credentials
+    GEMINI_API_KEY=<gemini_api_key>
+    TELEGRAM_TOKEN=<telegram_token>
+
+    # Optional: LangSmith
+    LANGSMITH_TRACING=true
+    LANGSMITH_ENDPOINT=<langsmith_end_point>
+    LANGSMITH_API_KEY=<langsmith_api_key>
+    LANGSMITH_PROJECT=<project_name>
 
 ### 4. Running
 

@@ -2,6 +2,7 @@ import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
+from langsmith import traceable
 from tools import rag_search_tool, get_order_status_tool, cancel_order_tool
 
 LLM_MODEL = "gemini-3.5-flash-lite"
@@ -33,6 +34,7 @@ agent = create_agent(
     checkpointer=memory
 )
 
+@traceable(name="Agent Run")
 def run_agent(user_input,thread_id="default_user"):
     config = {"configurable": {"thread_id": thread_id}}
 
